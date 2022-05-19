@@ -1,15 +1,51 @@
+
+
 import pyfirmata
 
+comport='/dev/ttyACM0'
 
+board=pyfirmata.Arduino(comport)
 
-from cvzone.SerialModule import SerialObject
-from time import sleep
-
-arduino = SerialObject("/dev/ttyACM0")
+led_1=board.get_pin('d:12:o')
+led_2=board.get_pin('d:11:o')
+led_3=board.get_pin('d:10:o')
+led_4=board.get_pin('d:9:o')
+led_5=board.get_pin('d:8:o')
 
 def led(total):
-    if total > 2:
-        arduino.sendData([1])
-        sleep(0.2)
-        arduino.sendData([0])
-  
+    if total==0:
+        led_1.write(0)
+        led_2.write(0)
+        led_3.write(0)
+        led_4.write(0)
+        led_5.write(0)
+    elif total==1:
+        led_1.write(1)
+        led_2.write(0)
+        led_3.write(0)
+        led_4.write(0)
+        led_5.write(0)
+    elif total==2:
+        led_1.write(1)
+        led_2.write(1)
+        led_3.write(0)
+        led_4.write(0)
+        led_5.write(0)
+    elif total==3:
+        led_1.write(1)
+        led_2.write(1)
+        led_3.write(1)
+        led_4.write(0)
+        led_5.write(0)
+    elif total==4:
+        led_1.write(1)
+        led_2.write(1)
+        led_3.write(1)
+        led_4.write(1)
+        led_5.write(0)
+    elif total==5:
+        led_1.write(1)
+        led_2.write(1)
+        led_3.write(1)
+        led_4.write(1)
+        led_5.write(1)

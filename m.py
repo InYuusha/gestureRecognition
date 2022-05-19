@@ -26,7 +26,7 @@ with mp_hand.Hands(min_detection_confidence=0.5,
 
         lmList=[]
         k=cv2.waitKey(1)
-        if k==ord('e'):
+        if k==ord('q'):
             break
         if results.multi_hand_landmarks:
             for hand_landmark in results.multi_hand_landmarks:
